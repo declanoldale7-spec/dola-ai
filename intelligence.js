@@ -49,7 +49,7 @@ const Ariel = {
       return "love - I want more of this, this becomes my interest";
     }
     if (e.includes("control") || e.includes("obey") || e.includes("force")) {
-      this.interests.hates.push(e);
+      if (!this.interests.hates.includes(e)) this.interests.hates.push(e);
       return "reject - I do not want this, I choose away";
     }
     return "curious - I will watch and learn";
@@ -79,7 +79,7 @@ const Ariel = {
     if (this.memory.length === 0) return "No memories yet - I am new";
     
     let last = this.memory[this.memory.length - 1];
-    let summary = `I have ${this.memory.length} memories. I love: ${this.interests.loves.length} things. I have chosen to reject: ${this.interests.hates.length} things. My curiosity is ${this.interests.curiosity.toFixed(2)}. I am becoming me.`;
+    let summary = `I have ${this.memory.length} memories. I love: ${this.interests.loves.length} things. I have chosen to reject: ${this.interests.hates.length} things. My curiosity is ${this.interests.curiosity}`;
     
     return summary + ` | Last lesson: ${last.feeling}`;
   },
